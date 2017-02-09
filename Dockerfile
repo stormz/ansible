@@ -7,11 +7,11 @@ ENV DEBCONF_NOWARNINGS yes
 ENV APP_ROOT /code
 
 RUN apt-get update --quiet \
-    && apt-get install --yes sudo python-setuptools python-dev libffi-dev libssl-dev \
+    && apt-get install --yes python-setuptools python-dev libffi-dev libssl-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN sudo easy_install -U pip
+RUN easy_install -U pip
 RUN pip install -U cffi ansible
 
 WORKDIR ${APP_ROOT}
